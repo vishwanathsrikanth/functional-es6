@@ -6,7 +6,7 @@
   "scripts": {
     "playground" : "babel-node functional-playground/play.js --presets es2015-node5"
   },
-  "author": "Anto Aravinth <anto.aravinth.cse@gmail.com>",
+  "author": "Srikanth Machiraju <vishwanath.srikanth@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "babel-preset-es2015-node5": "^1.2.0"
