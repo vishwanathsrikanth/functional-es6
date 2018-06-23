@@ -4,12 +4,16 @@
   "description": "Functional lib and examples in ES6",
   "main": "index.js",
   "scripts": {
-    "playground" : "babel-node functional-playground/play.js --presets es2015-node5",
-    "start" : "open functional-playground/index.html"
+    "playground": "babel-node functional-playground/play.js --presets es2015-node5",
+    "start": "open functional-playground/index.html"
   },
   "author": "Srikanth Machiraju <vishwanath.srikanth@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "babel-preset-es2015-node5": "^1.2.0"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1"
   }
 }
