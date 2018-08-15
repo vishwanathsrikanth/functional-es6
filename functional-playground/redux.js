@@ -2,10 +2,10 @@
   A simple redux
 */
 function createStore(reducer,preloadedState){
-	var currentReducer = reducer;
-    var currentState = preloadedState;
-    var currentListeners = [];
-    var nextListeners = currentListeners;
+	let currentReducer = reducer;
+    let currentState = preloadedState;
+    let currentListeners = [];
+    let nextListeners = currentListeners;
 
     function getState() {
     	return currentState;
@@ -35,8 +35,8 @@ function createStore(reducer,preloadedState){
 }
 
 //Example of using my redux.
-var initialState = {counter: 0};
-var store = createStore(reducer, initialState);
+let initialState = {counter: 0};
+let store = createStore(reducer, initialState);
 
 function render(state) {
   document.getElementById('counter').textContent = state.counter;

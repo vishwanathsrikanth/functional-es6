@@ -4,8 +4,8 @@ var id = 0;
 
 //transformer code
 function h(tag, props) {
-  var node
-  var children = []
+  let node
+  let children = []
 
   for (i = arguments.length; i-- > 2; ) {
     stack.push(arguments[i])
@@ -34,22 +34,21 @@ function h(tag, props) {
 //small library
 
 function app(props){
-	var appView = props.view;
-	var appState = props.state;
-	var appActions = createActions({}, props.actions)
-  var firstRender = false;
-  var node = h("p",{},"")
+	let appView = props.view;
+	let appState = props.state;
+	let appActions = createActions({}, props.actions)
+  let firstRender = false;
+  let node = h("p",{},"")
 	if(appView){
      requestAnimationFrame(render)
 	}
 
 // this function is used to replace the old DOM with new DO
   function render() {
-	debugger;
-    var doc = patch(node,(node = appView(appState,appActions)))
+    let doc = patch(node,(node = appView(appState,appActions)))
     if(doc) {
 		  var children = document.body.children;
-			for(var i = 0; i <= children.length; i++){
+			for(let i = 0; i <= children.length; i++){
 					removeElement(document.body, children[i], children[i])
 			}
     	document.body.appendChild(doc);
@@ -62,7 +61,7 @@ function app(props){
       parent.removeChild(removeChildren(element, node))
     }
 
-    var cb = node.attributes && node.attributes.onremove
+    let cb = node.attributes && node.attributes.onremove
     if (cb) {
       cb(element, done)
     } else {
@@ -72,9 +71,9 @@ function app(props){
 
 	// remove children recursively
 	function removeChildren(element, node) {
-    var attributes = node.attributes
+    let attributes = node.attributes
     if (attributes) {
-      for (var i = 0; i < node.children.length; i++) {
+      for (let i = 0; i < node.children.length; i++) {
         removeChildren(element.childNodes[i], node.children[i])
       }
     }
@@ -103,23 +102,23 @@ function app(props){
   
 	// the merge function is used to merge the old state and new state
   function merge(target, source) {
-    var result = {}
-    for (var i in target) { result[i] = target[i] }
-    for (var i in source) { result[i] = source[i] }
+    let result = {}
+    for (let i in target) { result[i] = target[i] }
+    for (let i in source) { result[i] = source[i] }
     return result
   }
 
 	// The patch function creates HTML Elements
 	function patch(node,newNode) {
-		debugger;
+		let element;
     if (typeof newNode === "string") {
-      var element = document.createTextNode(newNode)
+      element = document.createTextNode(newNode)
     } else {
-        var element = document.createElement(newNode.tag);
-        for (var i = 0; i < newNode.children.length; ) {
+        element = document.createElement(newNode.tag);
+        for (let i = 0; i < newNode.children.length; ) {
               element.appendChild(patch(node,newNode.children[i++]))
         }
-        for (var i in newNode.props) {
+        for (let i in newNode.props) {
            element[i] = newNode.props[i]
         }
         element.setAttribute("id",newNode.props.id != undefined ? newNode.props.id : newNode.generatedId);
@@ -131,7 +130,7 @@ function app(props){
 
 /** @jsx h */
 
-function hackYou() {
+function main() {
 	
 	app({ view: (state, actions) =>
 	    <div>
@@ -153,4 +152,4 @@ function hackYou() {
 	})
 }
 
-hackYou()
+main()
